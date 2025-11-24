@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<ruleset name="PHP56TabsStandard">
+    <description>PHP 5.6 standard with tabs and camelCase, without PSR2 spaces.</description>
+
+    <file>.</file>
+
+    <config name="php_version" value="50600"/>
+
+    <!-- Enforce tabs for indentation -->
+    <rule ref="Generic.WhiteSpace.DisallowSpaceIndent"/>
+
+    <!-- Enforce lowercase keywords -->
+    <rule ref="Generic.PHP.LowerCaseKeyword"/>
+
+    <!-- Max line length -->
+    <rule ref="Generic.Files.LineLength">
+        <properties>
+            <property name="lineLimit" value="120"/>
+            <property name="absoluteLineLimit" value="120"/>
+        </properties>
+    </rule>
+
+    <!-- Trailing whitespace -->
+    <rule ref="Squiz.WhiteSpace.SuperfluousWhitespace"/>
+
+    <!-- camelCase -->
+    <rule ref="Squiz.NamingConventions.ValidFunctionName">
+        <exclude name="Squiz.NamingConventions.ValidFunctionName.PrivateNoUnderscore"/>
+    </rule>
+    <rule ref="Squiz.NamingConventions.ValidVariableName">
+        <exclude name="Squiz.NamingConventions.ValidVariableName.PrivateNoUnderscore"/>
+    </rule>
+    <rule ref="PSR2.Classes.PropertyDeclaration">    
+        <properties>
+            <property name="camelCaps" value="true"/>
+        </properties>
+    </rule>
+
+    <rule ref="Squiz.Functions.FunctionDeclaration">
+        <properties>
+            <property name="openingBraceNewLine" value="false"/>
+            <property name="allowClassMethod" value="true"/>
+        </properties>
+    </rule>
+
+    <rule ref="./PHP56TabsStandard/Sniffs/Methods/SameLineBraceSniff.php"/>
+    <rule ref="./PHP56TabsStandard/Sniffs/Commenting/EnsureCommentSpacingSniff.php"/>
+    <rule ref="./PHP56TabsStandard/Sniffs/ClassStructure/ClassOrderSniff.php"/>
+
+    <!-- Maximum nesting depth -->
+    <rule ref="Generic.Metrics.NestingLevel">
+        <properties>
+            <property name="maxNestingLevel" value="4"/>
+        </properties>
+    </rule>
+
+</ruleset>
